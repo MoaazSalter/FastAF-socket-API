@@ -25,10 +25,7 @@ logger = logging.getLogger(__name__)
 try:
     ort_session = ort.InferenceSession(
     "best.onnx",
-    providers=[
-        ("CUDAExecutionProvider", {"cudnn_conv_algo_search": "DEFAULT"}),
-        "CPUExecutionProvider"
-    ],
+    providers=["CPUExecutionProvider"],
     sess_options=ort.SessionOptions())
     logger.info("ONNX model loaded successfully")
 except Exception as e:
